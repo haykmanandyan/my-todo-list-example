@@ -1,0 +1,22 @@
+<ul class="todo-list-container"
+    cdkDropList
+    (cdkDropListDropped)="onDrop($event)"
+    [cdkDropListData]="todos">
+  <li cdkDrag
+      class="todo-item"
+      *ngFor="let item of todos, let i = index"
+      (click)="onClick($event, item)"
+      [class.checked]="item.state">
+    {{ item.name }}
+    <div class="action-container">
+      <i class="fas fa-arrow-down"
+         *ngIf="i != todos.length - 1"
+         (click)="takeDown(i)"></i>
+      <i class="fas fa-arrow-up"
+         (click)="takeUp(i)"
+         *ngIf="i != 0"></i>
+      <i class="fas fa-close"
+         (click)="onDelete(i)"></i>
+    </div>
+  </li>
+</ul>

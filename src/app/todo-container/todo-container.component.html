@@ -1,0 +1,11 @@
+<div class="todo-container">
+  <div class="label-container"><label for="todo">To Do List</label></div>
+  <div class="add-container">
+    <input class="input-todo" type="text" id="todo" placeholder="Title..." [(ngModel)]="inputText">
+    <button
+      class="add-todo"
+      type="submit"
+      (click)="addTodo(inputText)">Add
+    </button>
+  </div>
+</div>

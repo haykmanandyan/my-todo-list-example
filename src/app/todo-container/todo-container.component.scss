@@ -1,0 +1,46 @@
+/*styling todo-container*/
+.todo-container {
+  display: flex;
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  .label-container {
+    flex-basis: 100%;
+  }
+  .add-container {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+
+    /* Style the input */
+    .input-todo {
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      width: 100%;
+      padding: 10px;
+      float: left;
+      font-size: 16px;
+    }
+    /* Style the "Add" button */
+    .add-todo {
+      min-width: 80px;
+      padding: 10px;
+      background: #d9d9d9;
+      color: #555;
+      float: left;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 0;
+      &:hover {
+        background-color: #bbb;
+      }
+    }
+  }
+}
