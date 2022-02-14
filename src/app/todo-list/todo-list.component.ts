@@ -1,4 +1,4 @@
-import {Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 import {Todo} from "../common/todo.model";
 
@@ -20,7 +20,6 @@ export class TodoListComponent implements OnChanges, OnInit {
 
 
   public ngOnChanges(changes: SimpleChanges): void {
-
     if (this.newTodo && this.checkTodo()) {
       this.todos.push(this.newTodo);
       this.toLocalStorage();
@@ -30,17 +29,21 @@ export class TodoListComponent implements OnChanges, OnInit {
   }
 
   public ngOnInit(): void {
-    this.todos = JSON.parse(localStorage.getItem('todos'));
+    if (JSON.parse(localStorage.getItem('todos'))) {
+      this.todos = JSON.parse(localStorage.getItem('todos'));
+    }
   }
 
   public checkTodo(): boolean {
     let check = true;
-    this.todos.forEach((todo: Todo) => {
-      if (this.newTodo.name === todo.name) {
-        alert('The todo already exist!!');
-        return check = false;
-      }
-    });
+    if (this.todos) {
+      this.todos.forEach((todo: Todo) => {
+        if (this.newTodo.name === todo.name) {
+          alert('The todo already exist!!');
+          return check = false;
+        }
+      });
+    }
     return check;
   }
 
